@@ -5,23 +5,12 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Catálogo — AIROX</title>
 <meta name="description" content="Catálogo completo de AIROX: AirPods, JBL, smartwatches, lentes inteligentes, gaming, Alexa, accesorios, streaming y más.">
-<link rel="icon" href="data:,">
+<link rel="icon" href="images/brand/favicon.jpg">
 <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
-<header class="site">
-  <nav class="nav">
-    <a href="index.html" class="logo">AIROX</a>
-    <button class="nav-toggle" aria-label="Menú">&#9776;</button>
-    <div class="nav-links">
-      <a href="index.html">Inicio</a>
-      <a href="catalogo.html">Catálogo</a>
-      <a href="index.html#sobre-nosotros">Sobre nosotros</a>
-      <a href="index.html#contacto">Contacto</a>
-    </div>
-  </nav>
-</header>
+<div id="site-header"></div>
 
 <section>
   <h2 class="section-title">Catálogo Airox</h2>
@@ -35,22 +24,23 @@
 
   <div class="product-grid" id="grid"></div>
 
-  <p class="disclaimer">Precios y stock referenciales, sujetos a confirmación por WhatsApp según disponibilidad del proveedor.</p>
+  <p class="disclaimer">Precios y stock referenciales, sujetos a confirmación por WhatsApp según disponibilidad.</p>
 </section>
 
-<footer>
-  &copy; 2026 AIROX — Tecnología, audio y accesorios. Moyobamba, San Martín, Perú.
-</footer>
-
-<a class="wa-float" target="_blank" rel="noopener" href="https://wa.me/51991648399" aria-label="WhatsApp">💬</a>
+<div id="site-footer"></div>
 
 <script src="js/products.js"></script>
+<script src="js/legal-content.js"></script>
 <script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/components.js"></script>
 <script>
   const params = new URLSearchParams(window.location.search);
   const initialCat = params.get("cat") || "all";
+  const initialSearch = params.get("search") || "";
   document.addEventListener("DOMContentLoaded", () => {
-    renderCatalog({ gridId: "grid", filterId: "filters", searchId: "search", initialCategory: initialCat });
+    renderLayout("catalogo");
+    renderCatalog({ gridId: "grid", filterId: "filters", searchId: "search", initialCategory: initialCat, initialSearch });
   });
 </script>
 </body>

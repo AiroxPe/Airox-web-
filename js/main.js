@@ -4,11 +4,6 @@ function waLink(message) {
   return `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 }
 
-function productWaLink(p) {
-  const precioTxt = p.precio != null ? `(S/${p.precio})` : "(precio a consultar)";
-  return waLink(`Hola Airox! Quiero pedir: ${p.name} ${precioTxt}`);
-}
-
 function formatPrice(p) {
   if (p.precio == null) return `<span class="product-price consultar">Consultar precio</span>`;
   return `<span class="product-price">S/ ${p.precio}</span>`;
@@ -26,13 +21,26 @@ function productCardHTML(p) {
         <h4>${p.name}</h4>
         ${nota}
         ${formatPrice(p)}
-        <a class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener" href="${productWaLink(p)}">Pedir por WhatsApp</a>
+        <div class="product-actions">
+          <button type="button" class="btn-add-cart" onclick="handleAddToCart(this, '${p.id}')">Agregar al carrito</button>
+        </div>
       </div>
     </div>
   `;
 }
 
-function renderCatalog({ gridId, filterId, searchId, initialCategory }) {
+function handleAddToCart(btn, id) {
+  addToCart(id, 1);
+  const original = btn.textContent;
+  btn.textContent = "Agregado ✓";
+  btn.classList.add("added");
+  setTimeout(() => {
+    btn.textContent = original;
+    btn.classList.remove("added");
+  }, 1200);
+}
+
+function renderCatalog({ gridId, filterId, searchId, initialCategory, initialSearch }) {
   const grid = document.getElementById(gridId);
   if (!grid) return;
 
@@ -52,11 +60,12 @@ function renderCatalog({ gridId, filterId, searchId, initialCategory }) {
     buttons.forEach(b => b.addEventListener("click", () => setActive(b.dataset.cat)));
     setActive(initialCategory || "all");
   } else {
-    applyFilters("all", "");
+    applyFilters("all", initialSearch || "");
   }
 
   const search = searchId ? document.getElementById(searchId) : null;
   if (search) {
+    if (initialSearch) search.value = initialSearch;
     search.addEventListener("input", () => {
       const activeBtn = filterBar ? filterBar.querySelector(".filter-btn.active") : null;
       applyFilters(activeBtn ? activeBtn.dataset.cat : "all", search.value);
@@ -89,13 +98,21 @@ function renderCatalog({ gridId, filterId, searchId, initialCategory }) {
   }
 }
 
-function initNavToggle() {
-  const toggle = document.querySelector(".nav-toggle");
-  const links = document.querySelector(".nav-links");
-  if (toggle && links) {
-    toggle.addEventListener("click", () => links.classList.toggle("open"));
-    links.querySelectorAll("a").forEach(a => a.addEventListener("click", () => links.classList.remove("open")));
+function renderFeaturedRows(containerId) {
+  const container = document.getElementById(containerId);
+  if (!container) return;
+  const rows = [];
+  for (let i = 0; i < FEATURED_HOME.length; i += 6) {
+    rows.push(FEATURED_HOME.slice(i, i + 6));
   }
+  const rowTitles = ["Audio Apple", "JBL", "Wearables, lentes y gaming", "Alexa, accesorios y streaming"];
+  container.innerHTML = rows.map((ids, i) => {
+    const products = ids.map(id => PRODUCTS.find(p => p.id === id)).filter(Boolean);
+    return `
+      <div class="featured-row">
+        <h3>${rowTitles[i] || ""}</h3>
+        <div class="product-grid">${products.map(productCardHTML).join("")}</div>
+      </div>
+    `;
+  }).join("");
 }
-
-document.addEventListener("DOMContentLoaded", initNavToggle);

@@ -18,7 +18,7 @@ const CATEGORIES = [
 
 const PRODUCTS = [
   // Destacado
-  { id: "airpods-pro-2", name: "AirPods Pro 2da Generación + ANC", categoria: ["destacados", "apple-audio"], precio: 80, imagen: "airpods-pro-2.png", destacado: true },
+  { id: "airpods-pro-2", name: "AirPods Pro 2da Generación + ANC", categoria: ["destacados", "apple-audio"], precio: 80, imagen: "airpods-pro-2.webp", destacado: true },
 
   // Audio Apple
   { id: "airpods-4", name: "AirPods 4ta Generación + ANC", categoria: ["apple-audio"], precio: 95, imagen: "airpods-4.png" },
@@ -129,4 +129,17 @@ const PRODUCTS = [
   { id: "ipad", name: "iPad", categoria: ["premium"], precio: null, imagen: null, nota: "Cotizar según stock y modelo" },
   { id: "perfumes-arabes", name: "Perfumes Árabes", categoria: ["premium"], precio: null, imagen: null, nota: "Consultar catálogo disponible" },
   { id: "ropa-streetwear", name: "Ropa Streetwear", categoria: ["premium"], precio: null, imagen: null, nota: "Consultar catálogo disponible" },
+];
+
+// Productos destacados en el Inicio: 4 filas de 6, en este orden exacto.
+// Para cambiar qué se muestra en el home, edita esta lista (usa los "id" de arriba).
+const FEATURED_HOME = [
+  // Fila 1 — Audio Apple
+  "airpods-pro-2", "airpods-4", "airpods-pro-3", "airpods-max-a1", "earpods-c", "apple-watch-airpods-combo",
+  // Fila 2 — JBL
+  "boombox4", "flip7", "charge6", "xtreme4", "tour-pro4", "clip5",
+  // Fila 3 — Wearables, lentes y gaming
+  "apple-watch", "hi-watch-pro", "s3-ultra", "consola-m4", "e88-drone", "pry012-proyector",
+  // Fila 4 — Alexa, accesorios y streaming
+  "alaxe-pro-max", "magsafe-20000", "case-charge6", "netflix", "spotify-premium", "combo-100w-samsung",
 ];
