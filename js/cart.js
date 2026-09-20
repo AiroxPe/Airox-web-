@@ -35,7 +35,6 @@ function addToCart(id, qty = 1) {
     cart.push({ id, qty });
   }
   saveCart(cart);
-  openCart();
 }
 
 function removeFromCart(id) {

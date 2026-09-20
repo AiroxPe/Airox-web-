@@ -61,14 +61,10 @@ function headerHTML(activePage) {
 
   return `
     <header class="site">
-      <div class="hero-carousel" id="hero-carousel">
-        ${HERO_SLIDES.map(heroSlideHTML).join("")}
-      </div>
-
       <div class="utility-bar">
-        <div class="wrap utility-inner">
+        <div class="utility-inner">
           <a href="index.html" class="logo-link">
-            <img src="images/brand/logo-dark.jpg" alt="AIROX" class="logo-img">
+            <img src="images/brand/logo-header-white.png" alt="AIROX" class="logo-img">
           </a>
           <button class="icon-btn" id="hamburger-btn" aria-label="Categorías">
             <span></span><span></span><span></span>
@@ -92,6 +88,10 @@ function headerHTML(activePage) {
         </div>
       </nav>
     </header>
+
+    <div class="hero-carousel" id="hero-carousel">
+      ${HERO_SLIDES.map(heroSlideHTML).join("")}
+    </div>
 
     <div class="drawer-overlay" id="drawer-overlay"></div>
 
@@ -129,6 +129,25 @@ function legalAccordionHTML() {
   `).join("");
 }
 
+const FOOTER_ICONS = {
+  facebook: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9.2"/><path d="M13.8 8.4h1.6V6h-2c-1.8 0-3 1.2-3 3v1.6H8.6v2.4h1.8V18h2.4v-5h1.9l.4-2.4h-2.3v-1.2c0-.6.3-1 1-1z"/></svg>`,
+  instagram: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="4" y="4" width="16" height="16" rx="4.5"/><circle cx="12" cy="12" r="3.6"/><circle cx="16.6" cy="7.4" r="0.6" fill="currentColor" stroke="none"/></svg>`,
+  mail: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="5.5" width="17" height="13" rx="2"/><path d="M4 6.5l8 6.5 8-6.5"/></svg>`,
+  phone: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M6.5 4h3l1.3 4.2-2 1.6a12 12 0 0 0 5.4 5.4l1.6-2 4.2 1.3v3a1.8 1.8 0 0 1-2 1.8A16 16 0 0 1 4.7 6a1.8 1.8 0 0 1 1.8-2z"/></svg>`,
+  pin: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-6.5-5.7-6.5-11A6.5 6.5 0 0 1 18.5 10c0 5.3-6.5 11-6.5 11z"/><circle cx="12" cy="10" r="2.3"/></svg>`,
+};
+
+function footerContactRow(icon, label, href) {
+  const tag = href ? "a" : "div";
+  const attrs = href ? `href="${href}" target="_blank" rel="noopener"` : "";
+  return `
+    <${tag} class="footer-contact-row" ${attrs}>
+      <span class="footer-icon-circle">${FOOTER_ICONS[icon]}</span>
+      <span>${label}</span>
+    </${tag}>
+  `;
+}
+
 function footerHTML() {
   return `
     <footer class="site-footer">
@@ -141,11 +160,11 @@ function footerHTML() {
         </div>
         <div class="footer-col footer-contact">
           <h4>Síguenos y contáctanos</h4>
-          <a href="https://wa.me/51991648399" target="_blank" rel="noopener">💬 WhatsApp: 991 648 399</a>
-          <a href="https://www.instagram.com/airox_pe/" target="_blank" rel="noopener">📷 Instagram: @airox_pe</a>
-          <a href="https://www.facebook.com/profile.php?id=61585965487130" target="_blank" rel="noopener">📘 Facebook: Airox</a>
-          <a href="mailto:airoxpe@gmail.com">✉️ airoxpe@gmail.com</a>
-          <p class="footer-location">📍 Moyobamba, San Martín, Perú</p>
+          ${footerContactRow("facebook", "Airox", "https://www.facebook.com/profile.php?id=61585965487130")}
+          ${footerContactRow("instagram", "@airox_pe", "https://www.instagram.com/airox_pe/")}
+          ${footerContactRow("mail", "Gmail", "mailto:airoxpe@gmail.com")}
+          ${footerContactRow("phone", "+51 991 648 399", "https://wa.me/51991648399")}
+          ${footerContactRow("pin", "Moyobamba, San Martín, Perú")}
         </div>
       </div>
       <p class="footer-bottom">&copy; 2026 AIROX — Tecnología, audio y accesorios.</p>

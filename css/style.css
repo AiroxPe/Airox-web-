@@ -111,8 +111,8 @@ header.site {
   padding: 10px 20px;
 }
 
-.logo-link { flex-shrink: 0; display: flex; }
-.logo-img { height: 34px; border-radius: 6px; }
+.logo-link { flex-shrink: 0; display: flex; align-items: center; }
+.logo-img { height: 26px; width: auto; }
 
 .icon-btn {
   background: none;
@@ -136,7 +136,7 @@ header.site {
   background: #1a1a1a;
   border-radius: 999px;
   padding: 6px 8px 6px 16px;
-  max-width: 420px;
+  max-width: 760px;
 }
 
 .search-wrap input {
@@ -479,7 +479,7 @@ section { padding: 56px 20px; }
 .product-price { font-size: 18px; font-weight: 800; margin: 4px 0; }
 .product-price.consultar { font-size: 14px; color: var(--gray-500); }
 
-.product-actions { display: flex; gap: 8px; }
+.product-actions { display: flex; flex-direction: column; gap: 8px; }
 .btn-add-cart {
   flex: 1;
   background: var(--black);
@@ -559,10 +559,34 @@ section { padding: 56px 20px; }
   letter-spacing: 0.5px;
 }
 
-.footer-contact { display: flex; flex-direction: column; gap: 12px; align-items: flex-start; }
-.footer-contact a { font-size: 14px; color: #ddd; }
-.footer-contact a:hover { color: var(--white); }
-.footer-location { font-size: 14px; color: #999; margin: 4px 0 0; }
+.footer-contact { display: flex; flex-direction: column; gap: 4px; align-items: flex-start; }
+
+.footer-contact-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 10px 0;
+  color: #bbb;
+  font-size: 14.5px;
+  letter-spacing: 0.2px;
+}
+
+a.footer-contact-row:hover { color: var(--white); }
+a.footer-contact-row:hover .footer-icon-circle { border-color: #666; color: var(--white); }
+
+.footer-icon-circle {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid #3a3a3a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #999;
+  flex-shrink: 0;
+}
+
+.footer-icon-circle svg { width: 17px; height: 17px; }
 
 .legal-accordion { display: flex; flex-direction: column; }
 

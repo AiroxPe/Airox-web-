@@ -9,6 +9,11 @@ function formatPrice(p) {
   return `<span class="product-price">S/ ${p.precio}</span>`;
 }
 
+function productWaLink(p) {
+  const precioTxt = p.precio != null ? `(S/${p.precio})` : "(precio a consultar)";
+  return waLink(`Hola Airox! Quiero pedir: ${p.name} ${precioTxt}`);
+}
+
 function productCardHTML(p) {
   const img = p.imagen
     ? `<div class="product-img"><img src="images/products/${p.imagen}" alt="${p.name}" loading="lazy"></div>`
@@ -23,6 +28,7 @@ function productCardHTML(p) {
         ${formatPrice(p)}
         <div class="product-actions">
           <button type="button" class="btn-add-cart" onclick="handleAddToCart(this, '${p.id}')">Agregar al carrito</button>
+          <a class="btn btn-whatsapp btn-sm" target="_blank" rel="noopener" href="${productWaLink(p)}">Comprar</a>
         </div>
       </div>
     </div>
