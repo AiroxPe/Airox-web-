@@ -16,7 +16,7 @@ function productWaLink(p) {
 
 function productCardHTML(p) {
   const img = p.imagen
-    ? `<div class="product-img"><img src="images/products/${p.imagen}" alt="${p.name}" loading="lazy"></div>`
+    ? `<div class="product-img${p.categoria.includes("streaming") ? " logo" : ""}"><img src="images/products/${p.imagen}" alt="${p.name}" loading="lazy"></div>`
     : `<div class="product-img placeholder">Foto próximamente</div>`;
   const nota = p.nota ? `<p class="product-nota">${p.nota}</p>` : "";
   return `
