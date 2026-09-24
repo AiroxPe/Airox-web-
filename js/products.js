@@ -68,7 +68,7 @@ const PRODUCTS = [
   { id: "lentes-inteligentes", name: "Lentes Inteligentes", categoria: ["lentes"], precio: 249, imagen: "lentes-inteligentes.png" },
   { id: "rayban-meta", name: "Rayban Meta", categoria: ["lentes"], precio: 1299, imagen: "rayban-meta.png" },
   { id: "oaklay-g5-max", name: "Oaklay G5 Max", categoria: ["lentes"], precio: 269, imagen: "oaklay-g5-max.jpg" },
-  { id: "rayban-meta-mt5", name: "Rayban Meta MT5 Ultra", categoria: ["lentes"], precio: 369, imagen: "rayban-meta-mt5.jpg" },
+  { id: "m02x-pro-max", name: "M02X Pro Max", categoria: ["lentes"], precio: 369, imagen: "m02x-pro-max.jpg" },
   { id: "cy01-lentes", name: "CY01 Lentes Inteligente", categoria: ["lentes"], precio: 269, imagen: "cy01-lentes.jpg" },
 
   // Gaming y tecnología

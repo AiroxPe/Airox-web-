@@ -70,8 +70,9 @@ function headerHTML(activePage, opts = {}) {
             <span></span><span></span><span></span>
           </button>
           <div class="search-wrap">
-            <input type="text" id="header-search" placeholder="Buscar producto...">
+            <input type="text" id="header-search" placeholder="Buscar producto..." autocomplete="off" aria-label="Buscar producto">
             <button type="button" id="header-search-btn" aria-label="Buscar">🔍</button>
+            <div class="search-suggest" id="search-suggest" role="listbox"></div>
           </div>
           <button class="icon-btn cart-btn" id="cart-btn" aria-label="Carrito">
             🛒<span id="cart-count" class="cart-badge">0</span>
@@ -200,17 +201,60 @@ function initDrawers() {
 function initHeaderSearch() {
   const input = document.getElementById("header-search");
   const btn = document.getElementById("header-search-btn");
+  const box = document.getElementById("search-suggest");
   if (!input) return;
 
   const params = new URLSearchParams(window.location.search);
   const existing = params.get("search");
-  if (existing) input.value = existing;
+  if (existing && document.body.dataset.page === "catalogo") input.value = existing;
+
+  let items = [];
+  let active = -1;
+
+  function close() { box.classList.remove("open"); active = -1; }
+
+  function paint() {
+    box.querySelectorAll(".suggest-item").forEach((el, i) => el.classList.toggle("active", i === active));
+  }
+
+  function render() {
+    const term = input.value.trim();
+    if (!term) { close(); return; }
+    items = searchProducts(term, 6);
+    const total = searchProducts(term).length;
+    if (items.length === 0) {
+      box.innerHTML = `<div class="suggest-empty">No encontramos "${term.replace(/</g, "&lt;")}". Prueba con otra palabra.</div>`;
+    } else {
+      box.innerHTML = items.map(p => `
+        <a class="suggest-item" href="${productUrl(p)}" role="option">
+          <span class="suggest-img${p.categoria.includes("streaming") ? " logo" : ""}">${p.imagen ? `<img src="images/products/${p.imagen}" alt="">` : ""}</span>
+          <span class="suggest-name">${p.name}</span>
+          <span class="suggest-price">${p.precio != null ? "S/ " + p.precio : "Consultar"}</span>
+        </a>`).join("") +
+        (total > items.length ? `<a class="suggest-all" href="catalogo.html?search=${encodeURIComponent(term)}">Ver los ${total} resultados</a>` : "");
+    }
+    active = -1;
+    box.classList.add("open");
+  }
 
   function go() {
     const term = input.value.trim();
-    window.location.href = `catalogo.html${term ? "?search=" + encodeURIComponent(term) : ""}`;
+    if (!term) { window.location.href = "catalogo.html"; return; }
+    if (active >= 0 && items[active]) { window.location.href = productUrl(items[active]); return; }
+    const results = searchProducts(term);
+    if (results.length === 1) { window.location.href = productUrl(results[0]); return; }
+    window.location.href = `catalogo.html?search=${encodeURIComponent(term)}`;
   }
-  input.addEventListener("keydown", e => { if (e.key === "Enter") go(); });
+
+  input.addEventListener("input", render);
+  input.addEventListener("focus", () => { if (input.value.trim()) render(); });
+  input.addEventListener("keydown", e => {
+    if (e.key === "Enter") { e.preventDefault(); go(); }
+    else if (e.key === "ArrowDown" && items.length) { e.preventDefault(); active = (active + 1) % items.length; paint(); }
+    else if (e.key === "ArrowUp" && items.length) { e.preventDefault(); active = (active - 1 + items.length) % items.length; paint(); }
+    else if (e.key === "Escape") close();
+  });
+  document.addEventListener("click", e => { if (!e.target.closest(".search-wrap")) close(); });
   if (btn) btn.addEventListener("click", go);
 }
 
@@ -233,6 +277,7 @@ function initLegalAccordion() {
 function renderLayout(activePage, opts = {}) {
   const headerEl = document.getElementById("site-header");
   const footerEl = document.getElementById("site-footer");
+  document.body.dataset.page = activePage;
   if (headerEl) headerEl.innerHTML = headerHTML(activePage, opts);
   if (footerEl) footerEl.innerHTML = footerHTML();
 

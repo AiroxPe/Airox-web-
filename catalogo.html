@@ -12,7 +12,7 @@
 
 <div id="site-header"></div>
 
-<section>
+<section id="catalog-top">
   <h2 class="section-title">Catálogo Airox</h2>
   <p class="section-sub">Filtra por categoría o busca el producto que necesitas</p>
 
@@ -20,6 +20,7 @@
     <input type="text" id="search" placeholder="Buscar producto...">
   </div>
 
+  <p class="search-info" id="search-info"></p>
   <div class="filters" id="filters"></div>
 
   <div class="product-grid" id="grid"></div>
@@ -41,6 +42,7 @@
   document.addEventListener("DOMContentLoaded", () => {
     renderLayout("catalogo");
     renderCatalog({ gridId: "grid", filterId: "filters", searchId: "search", initialCategory: initialCat, initialSearch });
+    if (initialSearch || params.get("cat")) document.getElementById("catalog-top").scrollIntoView();
   });
 </script>
 </body>

@@ -29,5 +29,5 @@ Excepciones — esto SIEMPRE se confirma con el usuario antes de actuar, incluso
 - Fuente de verdad de precios/productos: `js/products.js`.
 - Cada producto abre `producto.html?id=<id>` (galería con miniaturas, características, cantidad, carrusel de similares). Fotos extra, características y descripciones viven en `js/product-details.js` (solo datos confirmados: catálogo del proveedor, fotos o lo que AIROX confirme; nunca publicar precios/nombre del proveedor).
 - Las imágenes de productos vienen de fotos de catálogo de proveedor (no fotos propias) salvo AirPods Pro 2da gen, lentes y equipos premium (fotos aportadas por el dueño, carpeta Descargas\Airox). Si el negocio consigue fotos propias, reemplazarlas en `images/products/`.
-- Las fotos "M02X Pro Max" del dueño se asignaron al producto Rayban Meta MT5 Ultra (mismo estilo de ficha); confirmar con el dueño si es otro modelo.
+- El producto antes llamado "Rayban Meta MT5 Ultra" se renombró a "M02X Pro Max" (id m02x-pro-max, S/369) por decisión del dueño.
 - Fotos de JBL sueltas sin clasificar en `Descargas\Airox\Images productos web` (rojo con asa, parlantes pequeños en vitrina): pendientes de asignar.

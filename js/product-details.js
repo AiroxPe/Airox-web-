@@ -168,14 +168,14 @@ const DETAILS = {
     caracteristicas: ["Lentes con cámara (AI Glasses)", "Diseño deportivo con luna espejada"],
     descripcion: "Lentes inteligentes con cámara y diseño deportivo.",
   },
-  "rayban-meta-mt5": {
-    imagenes: ["rayban-meta-mt5.jpg", "rayban-meta-mt5-2.jpg"],
+  "m02x-pro-max": {
+    imagenes: ["m02x-pro-max.jpg", "m02x-pro-max-2.jpg"],
     caracteristicas: [
       "Lentes con cámara Full HD",
-      "Diseño inspirado en Ray-Ban Meta (no es producto oficial de la marca)",
       "Estuche disponible en color marrón o negro",
+      "Paño de limpieza incluido (según foto)",
     ],
-    descripcion: "Lentes inteligentes con cámara Full HD y estuche, con diseño inspirado en Ray-Ban Meta.",
+    descripcion: "Lentes inteligentes con cámara Full HD, con estuche y paño de limpieza.",
   },
   "cy01-lentes": { caracteristicas: ["Lentes con cámara"], descripcion: "Lentes inteligentes CY01 con cámara." },
 
