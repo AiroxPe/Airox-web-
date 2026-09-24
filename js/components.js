@@ -55,7 +55,7 @@ function categoryDrawerLinksHTML() {
     .join("");
 }
 
-function headerHTML(activePage) {
+function headerHTML(activePage, opts = {}) {
   const navItem = (href, label, key) =>
     `<a href="${href}" class="${activePage === key ? "active" : ""}">${label}</a>`;
 
@@ -89,9 +89,9 @@ function headerHTML(activePage) {
       </nav>
     </header>
 
-    <div class="hero-carousel" id="hero-carousel">
+    ${opts.hero === false ? "" : `<div class="hero-carousel" id="hero-carousel">
       ${HERO_SLIDES.map(heroSlideHTML).join("")}
-    </div>
+    </div>`}
 
     <div class="drawer-overlay" id="drawer-overlay"></div>
 
@@ -230,10 +230,10 @@ function initLegalAccordion() {
   });
 }
 
-function renderLayout(activePage) {
+function renderLayout(activePage, opts = {}) {
   const headerEl = document.getElementById("site-header");
   const footerEl = document.getElementById("site-footer");
-  if (headerEl) headerEl.innerHTML = headerHTML(activePage);
+  if (headerEl) headerEl.innerHTML = headerHTML(activePage, opts);
   if (footerEl) footerEl.innerHTML = footerHTML();
 
   initHeroCarousel();

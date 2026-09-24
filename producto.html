@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Producto — AIROX</title>
+<meta name="description" content="Detalles del producto en AIROX: fotos, características, precio y pedido por WhatsApp.">
+<link rel="icon" href="images/brand/favicon.jpg">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<div id="site-header"></div>
+
+<main id="product-root"></main>
+
+<div id="site-footer"></div>
+
+<script src="js/products.js"></script>
+<script src="js/product-details.js"></script>
+<script src="js/legal-content.js"></script>
+<script src="js/main.js"></script>
+<script src="js/cart.js"></script>
+<script src="js/components.js"></script>
+<script src="js/product-page.js"></script>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    renderLayout("catalogo", { hero: false });
+    renderProductPage("product-root");
+  });
+</script>
+</body>
+</html>

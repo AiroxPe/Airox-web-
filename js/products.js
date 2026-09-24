@@ -66,10 +66,10 @@ const PRODUCTS = [
   // Lentes inteligentes
   { id: "s3-ultra", name: "Lentes con Cámara S3 Ultra", categoria: ["lentes"], precio: 189, imagen: "s3-ultra.png" },
   { id: "lentes-inteligentes", name: "Lentes Inteligentes", categoria: ["lentes"], precio: 249, imagen: "lentes-inteligentes.png" },
-  { id: "rayban-meta", name: "Rayban Meta", categoria: ["lentes"], precio: 1299, imagen: null },
-  { id: "oaklay-g5-max", name: "Oaklay G5 Max", categoria: ["lentes"], precio: 269, imagen: null },
-  { id: "rayban-meta-mt5", name: "Rayban Meta MT5 Ultra", categoria: ["lentes"], precio: 369, imagen: null },
-  { id: "cy01-lentes", name: "CY01 Lentes Inteligente", categoria: ["lentes"], precio: 269, imagen: null },
+  { id: "rayban-meta", name: "Rayban Meta", categoria: ["lentes"], precio: 1299, imagen: "rayban-meta.png" },
+  { id: "oaklay-g5-max", name: "Oaklay G5 Max", categoria: ["lentes"], precio: 269, imagen: "oaklay-g5-max.jpg" },
+  { id: "rayban-meta-mt5", name: "Rayban Meta MT5 Ultra", categoria: ["lentes"], precio: 369, imagen: "rayban-meta-mt5.jpg" },
+  { id: "cy01-lentes", name: "CY01 Lentes Inteligente", categoria: ["lentes"], precio: 269, imagen: "cy01-lentes.jpg" },
 
   // Gaming y tecnología
   { id: "pry012-proyector", name: "Proyector PRY-012", categoria: ["gaming-tech"], precio: 369, imagen: "pry012-proyector.png" },
@@ -124,11 +124,11 @@ const PRODUCTS = [
   { id: "claude-pro", name: "Claude Pro (Code + Cowork)", categoria: ["streaming"], precio: null, imagen: "claude-pro.png", nota: "Consultar disponibilidad y precio" },
 
   // Equipos premium (cotizar)
-  { id: "iphone", name: "iPhone", categoria: ["premium"], precio: null, imagen: null, nota: "Cotizar según stock, modelo y precio" },
-  { id: "macbook", name: "MacBook (Air / Pro)", categoria: ["premium"], precio: null, imagen: null, nota: "Cotizar según stock y modelo" },
-  { id: "ipad", name: "iPad", categoria: ["premium"], precio: null, imagen: null, nota: "Cotizar según stock y modelo" },
-  { id: "perfumes-arabes", name: "Perfumes Árabes", categoria: ["premium"], precio: null, imagen: null, nota: "Consultar catálogo disponible" },
-  { id: "ropa-streetwear", name: "Ropa Streetwear", categoria: ["premium"], precio: null, imagen: null, nota: "Consultar catálogo disponible" },
+  { id: "iphone", name: "iPhone", categoria: ["premium"], precio: null, imagen: "iphone.jpg", nota: "Cotizar según stock, modelo y precio" },
+  { id: "macbook", name: "MacBook (Air / Pro)", categoria: ["premium"], precio: null, imagen: "macbook.webp", nota: "Cotizar según stock y modelo" },
+  { id: "ipad", name: "iPad", categoria: ["premium"], precio: null, imagen: "ipad.webp", nota: "Cotizar según stock y modelo" },
+  { id: "perfumes-arabes", name: "Perfumes Árabes", categoria: ["premium"], precio: null, imagen: "perfumes-arabes.jpg", nota: "Consultar catálogo disponible" },
+  { id: "ropa-streetwear", name: "Ropa Streetwear", categoria: ["premium"], precio: null, imagen: "ropa-streetwear.jpg", nota: "Consultar catálogo disponible" },
 ];
 
 // Productos destacados en el Inicio: 4 filas de 6, en este orden exacto.

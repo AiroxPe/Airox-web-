@@ -14,16 +14,20 @@ function productWaLink(p) {
   return waLink(`Hola Airox! Quiero pedir: ${p.name} ${precioTxt}`);
 }
 
+function productUrl(p) {
+  return `producto.html?id=${encodeURIComponent(p.id)}`;
+}
+
 function productCardHTML(p) {
   const img = p.imagen
-    ? `<div class="product-img${p.categoria.includes("streaming") ? " logo" : ""}"><img src="images/products/${p.imagen}" alt="${p.name}" loading="lazy"></div>`
-    : `<div class="product-img placeholder">Foto próximamente</div>`;
+    ? `<a class="product-img${p.categoria.includes("streaming") ? " logo" : ""}" href="${productUrl(p)}" aria-label="Ver ${p.name}"><img src="images/products/${p.imagen}" alt="${p.name}" loading="lazy"></a>`
+    : `<a class="product-img placeholder" href="${productUrl(p)}">Foto próximamente</a>`;
   const nota = p.nota ? `<p class="product-nota">${p.nota}</p>` : "";
   return `
     <div class="product-card" data-cats="${p.categoria.join(",")}" data-name="${p.name.toLowerCase()}">
       ${img}
       <div class="product-body">
-        <h4>${p.name}</h4>
+        <h4><a href="${productUrl(p)}">${p.name}</a></h4>
         ${nota}
         ${formatPrice(p)}
         <div class="product-actions">
