@@ -254,6 +254,16 @@ const DETAILS = {
   },
 };
 
+DETAILS["google-one"] = {
+  imagenes: ["google-one.png", "gemini.png", "google.png"],
+  caracteristicas: [
+    "Plan Google One con Gemini Pro",
+    "Almacenamiento de 5 TB",
+    "Duración y condiciones de uso se confirman por WhatsApp antes de comprar",
+  ],
+  descripcion: "Suscripción a Google One con acceso a Gemini Pro y 5 TB de almacenamiento. Coordinamos contigo por WhatsApp la activación del servicio.",
+};
+
 // Valores por defecto para categorías sin detalle propio (streaming e IA)
 const STREAMING_DETAILS = {
   caracteristicas: [
